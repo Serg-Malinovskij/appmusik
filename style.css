@@ -16,7 +16,7 @@ body {
 }
 
 body {
- min-height: calc(var(--vh, 1vh) * 100);
+ height: calc(var(--vh, 1vh) * 100);
 }
 
 .app__videos {
@@ -42,8 +42,8 @@ body {
 
 .video {
   position: relative;
-  height: 100%;
-  /* height: 100vh; */
+   /* height: 100vh; */
+  height: calc(var(--vh, 1vh) * 100);
   width: 100%;
   background-color: white;
   scroll-snap-align: start;
