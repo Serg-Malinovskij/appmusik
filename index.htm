@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>shortsvideo.store</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app__videos">
+    <!-- video starts -->
+    <div class="video">
+      <video loop class="video__player" autoplay id="video__item" src="video1.mp4"></video>
+
+      <!-- sidebar -->
+      <div class="videoSidebar">
+        <div class="videoSidebar__button">
+          <span class="material-icons"> favorite_border </span>
+          <p>12</p>
+        </div>
+
+        <div class="videoSidebar__button">
+          <span class="material-icons"> message </span>
+          <p>23</p>
+        </div>
+
+        <div class="videoSidebar__button">
+          <span class="material-icons"> share </span>
+          <p>75</p>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div class="videoFooter">
+        <div class="videoFooter__text">
+          <h3>losttoyland</h3>
+          <p class="videoFooter__description">Cheshir</p>
+
+          <div class="videoFooter__ticker">
+            <span class="material-icons videoFooter__icon"> music_note </span>
+            <marquee>Song name</marquee>
+          </div>
+        </div>
+        <img src="png/934821-200.png" alt="" class="videoFooter__record">
+      </div>
+    </div>
+    <!-- video ends -->
+
+    <!-- video starts -->
+    <div class="video">
+      <video class="video__player" loop id="video__item" src="video2.mp4"></video>
+
+      <!-- sidebar -->
+      <div class="videoSidebar">
+        <div class="videoSidebar__button">
+          <span class="material-icons"> favorite_border </span>
+          <p>12</p>
+        </div>
+
+        <div class="videoSidebar__button">
+          <span class="material-icons"> message </span>
+          <p>23</p>
+        </div>
+
+        <div class="videoSidebar__button">
+          <span class="material-icons"> share </span>
+          <p>75</p>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div class="videoFooter">
+        <div class="videoFooter__text">
+          <h3>losttoyland</h3>
+          <p class="videoFooter__description">Cheshir</p>
+
+          <div class="videoFooter__ticker">
+            <span class="material-icons videoFooter__icon"> music_note </span>
+            <marquee>Song name</marquee>
+          </div>
+        </div>
+        <img src="png/934821-200.png" alt="" class="videoFooter__record">
+      </div>
+    </div>
+    <!-- video ends -->
+
+    <!-- video starts -->
+    <div class="video">
+      <video class="video__player" loop id="video__item" src="video3.mp4"></video>
+
+      <!-- sidebar -->
+      <div class="videoSidebar">
+        <div class="videoSidebar__button">
+          <span class="material-icons"> favorite_border </span>
+          <p>12</p>
+        </div>
+
+        <div class="videoSidebar__button">
+          <span class="material-icons"> message </span>
+          <p>23</p>
+        </div>
+
+        <div class="videoSidebar__button">
+          <span class="material-icons"> share </span>
+          <p>75</p>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <div class="videoFooter">
+        <div class="videoFooter__text">
+          <h3>losttoyland</h3>
+          <p class="videoFooter__description">Cheshir</p>
+
+          <div class="videoFooter__ticker">
+            <span class="material-icons videoFooter__icon"> music_note </span>
+            <marquee>Song name</marquee>
+          </div>
+        </div>
+        <img src="png/934821-200.png" alt="" class="videoFooter__record">
+      </div>
+    </div>
+    <!-- video ends -->
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    const videos = document.querySelectorAll('.video__player');
+    const videosArray = Array.from(videos);
+    console.log(videosArray);
+    document.addEventListener('', () => {
+
+      videosArray[0].play();
+    })
+
+    for (const video of videos) {
+      video.addEventListener('click', function () {
+        console.log('clicked');
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+
+    }
+
+    const videoContainer = document.querySelector('.app__videos');
+
+    let options = {
+      root: videoContainer,
+      rootMargin: '0px',
+      threshold: 1.0,
+    };
+
+
+    //entry.target.id == 'video__item'
+    let callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        console.log(entry);
+        if (entry.target) {
+          if (entry.isIntersecting) {
+            console.log(' is it?');
+            entry.target.play();
+          } else {
+            console.log('lol');
+            entry.target.pause();
+          }
+        }
+      });
+    };
+
+    let observer = new IntersectionObserver(callback, options);
+
+    videosArray.forEach((video) => {
+      observer.observe(video)
+    })
+
+
+  </script>
+</body>
+
+</html>
