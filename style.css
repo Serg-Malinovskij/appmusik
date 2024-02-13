@@ -14,13 +14,14 @@ body {
   position:relative;
   min-height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
+  max-height: calc(var(--vh, 1vh) * 100);
 }
 
 
 .app__videos {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
-  top:0;
+  bottom:0;
   position: relative;
   height: 100%;
   height: calc(var(--vh, 1vh) * 100);
