@@ -126,41 +126,30 @@
     </div>
     <!-- video ends -->
   </div>
-
   <script src="script.js"></script>
 
   <script>
     const videos = document.querySelectorAll('.video__player');
-    // преобразуем в массив
 
+    // преобразуем в массив
     const videosArray = Array.from(videos);
     console.log(videosArray);
 
-
-   // scripts.js
-function vieport() {
-  window.addEventListener('resize', function () {
+    // scripts.js
+    window.addEventListener('resize', function () {
       set_100vh_var();
-      detect_mobile();
-  });
-  window.addEventListener('orientationchange', function () {
+    });
+    window.addEventListener('orientationchange', function () {
       set_100vh_var();
-  });
-  
-  setTimeout(
-      set_100vh_var, 
-      50
-  );
-}
+    });
 
-function set_100vh_var() {
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
-  for (const video of videos) {
-      video.style.setProperty('--vh', `${window.innerHeight/100}px`);
-
-    }
-};
-
+    // функция устанавливает для body высоту равную высоте просмотра за минусом навигационного меню мобилок
+    function set_100vh_var() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight / 100}px`);
+      console.log('высота задана');
+    };
+    set_100vh_var();
+    // перебираем видео и назначаем каждому  обработчик
     for (const video of videos) {
       video.addEventListener('click', function () {
         console.log('clicked');
@@ -173,11 +162,12 @@ function set_100vh_var() {
 
     }
 
+    // контейнер, для наблюдения observer-ом
     const videoContainer = document.querySelector('.app__videos');
 
     let options = {
       root: videoContainer,
-      rootMargin: '0px',
+      rootMargin: '0px 0px 0px 0px',
       threshold: 1.0,
     };
 
@@ -200,7 +190,7 @@ function set_100vh_var() {
 
     let observer = new IntersectionObserver(callback, options);
 
-    videosArray.forEach((video) => {
+    videos.forEach((video) => {
       observer.observe(video)
     })
 
