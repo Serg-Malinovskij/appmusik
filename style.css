@@ -59,7 +59,7 @@ body {
 
 .videoSidebar {
   position: absolute;
-  top: 48%;
+  bottom: 50%;
   right: 10px;
 }
 
